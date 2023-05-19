@@ -13,7 +13,7 @@ function Feira() {
       <Header>
         <div>
           <h2>Olá! {nome}</h2>
-          <h3>Saldo: R$ {saldo} </h3>
+          <h3>Saldo: R$ {saldo} Reais</h3>
         </div>
         <p>Encontre os melhores produtos orgânicos!</p>
       </Header>
