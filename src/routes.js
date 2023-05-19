@@ -1,7 +1,6 @@
 import Carrinho from "pages/Carrinho";
 import Feira from "pages/Feira";
 import Login from "pages/Login";
-import React, { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { UsuarioProvider } from "common/context/Usuário";
 
