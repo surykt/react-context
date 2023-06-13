@@ -34,9 +34,29 @@ export const useCarrinhoContext = () => {
     );
   }
 
+  function removerProduto(id) {
+    const produto = carrinho.find(itemDoCarrinho => itemDoCarrinho.id === id);
+    const ultimoItemDoCarrinho = produto.quantidade === 1;
+
+    if (ultimoItemDoCarrinho) {
+      return setCarrinho(
+        carrinhoAnterior =>
+          carrinhoAnterior.filter(itemDoCarrinho => itemDoCarrinho.id !== id),
+        itemDoCarrinho.quantidade === 0,
+      );
+    }
+    setCarrinho(carrinhoAnterior =>
+      carrinhoAnterior.map(itemDoCarrinho => {
+        if (itemDoCarrinho.id === id) itemDoCarrinho.quantidade -= 1;
+        return itemDoCarrinho;
+      }),
+    );
+  }
+
   return {
     carrinho,
     setCarrinho,
     adicionarProduto,
+    removerProduto,
   };
 };
