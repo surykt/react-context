@@ -33,6 +33,7 @@ function Login() {
         variant="contained"
         color="primary"
         onClick={() => history.push("/feira")}
+        disabled={nome.length < 3}
       >
         Avançar
       </Button>
