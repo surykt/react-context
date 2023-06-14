@@ -1,7 +1,6 @@
 import { createContext, useState } from "react";
 
-const PagamentoContext = createContext();
-const [formaPagamento, setFormaPagamento] = useState(tiposPagamento[0]);
+export const PagamentoContext = createContext();
 
 const tiposPagamento = [
   {
@@ -27,6 +26,8 @@ const tiposPagamento = [
 ];
 
 export const PagamentoProvider = ({ children }) => {
+  const [formaPagamento, setFormaPagamento] = useState(tiposPagamento[0]);
+
   return (
     <PagamentoContext.Provider
       value={{ tiposPagamento, formaPagamento, setFormaPagamento }}

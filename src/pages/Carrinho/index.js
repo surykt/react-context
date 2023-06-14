@@ -1,6 +1,12 @@
-import { Button, Snackbar, InputLabel } from "@material-ui/core";
+import {
+  Button,
+  Snackbar,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   Container,
   Voltar,
@@ -10,10 +16,12 @@ import {
 import { useCarrinhoContext } from "common/context/Carrinho";
 import Produto from "components/Produto";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { PagamentoContext } from "common/context/Pagamento";
 
 function Carrinho() {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const { carrinho } = useCarrinhoContext();
+  const { formaPagamento, tiposPagamento } = useContext(PagamentoContext);
   const history = useHistory();
   return (
     <Container>
@@ -24,6 +32,16 @@ function Carrinho() {
       ))}
       <PagamentoContainer>
         <InputLabel> Forma de Pagamento </InputLabel>
+        <Select
+          value={formaPagamento}
+          //onChange={}
+        >
+          {tiposPagamento.map(pagamento => (
+            <MenuItem value={""} key={pagamento.id}>
+              {pagamento.nome}
+            </MenuItem>
+          ))}
+        </Select>
       </PagamentoContainer>
       <TotalContainer>
         <div>
