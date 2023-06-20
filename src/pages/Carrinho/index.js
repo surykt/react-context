@@ -21,7 +21,8 @@ import { PagamentoContext } from "common/context/Pagamento";
 function Carrinho() {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const { carrinho } = useCarrinhoContext();
-  const { formaPagamento, tiposPagamento } = useContext(PagamentoContext);
+  const { formaPagamento, setFormaPagamento, tiposPagamento } =
+    useContext(PagamentoContext);
   const history = useHistory();
   return (
     <Container>
@@ -33,11 +34,11 @@ function Carrinho() {
       <PagamentoContainer>
         <InputLabel> Forma de Pagamento </InputLabel>
         <Select
-          value={formaPagamento}
-          //onChange={}
+          value={formaPagamento.id}
+          onChange={event => setFormaPagamento(event.target.value)}
         >
           {tiposPagamento.map(pagamento => (
-            <MenuItem value={""} key={pagamento.id}>
+            <MenuItem value={pagamento.id} key={pagamento.id}>
               {pagamento.nome}
             </MenuItem>
           ))}
